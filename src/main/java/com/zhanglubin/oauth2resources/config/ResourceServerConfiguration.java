@@ -40,10 +40,4 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
                 .antMatchers("/page/info").hasAuthority("admin")
                 .antMatchers("/page/getUser").hasAuthority("admin");
     }
-
-    @Override
-    public void configure(ResourceServerSecurityConfigurer resourceServerSecurityConfigurer) throws Exception {
-        resourceServerSecurityConfigurer.resourceId("yinyinShop");
-        resourceServerSecurityConfigurer.tokenServices(new RemoteTokenServices());
-    }
 }
