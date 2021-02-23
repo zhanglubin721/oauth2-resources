@@ -5,6 +5,10 @@ logging:
     level:
         org.springframework: debug
 
+oauth2:
+    token-info-uri: http://localhost:9930/oauth/check_token
+#    token-info-uri: http://192.168.123.100:9930/oauth/check_token
+
 #security:
 #    oauth2:
 #        client:

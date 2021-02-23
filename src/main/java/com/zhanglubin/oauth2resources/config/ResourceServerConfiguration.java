@@ -1,5 +1,6 @@
 package com.zhanglubin.oauth2resources.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -21,11 +22,14 @@ import org.springframework.security.oauth2.provider.token.RemoteTokenServices;
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
 public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
 
+    @Value("${oauth2.token-info-uri}")
+    private String tokenInfoUri;
+
     @Primary
     @Bean
     public RemoteTokenServices tokenServices() {
         final RemoteTokenServices tokenService = new RemoteTokenServices();
-        tokenService.setCheckTokenEndpointUrl("http://localhost:9930/oauth/check_token");
+        tokenService.setCheckTokenEndpointUrl(tokenInfoUri);
         tokenService.setClientId("yinyinShop");
         tokenService.setClientSecret("123456");
         return tokenService;
